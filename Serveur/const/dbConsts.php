@@ -9,5 +9,5 @@
 const DB_HOST = '284y9.myd.infomaniak.com';
 const DB_PORT = '3306';
 const DB_NAME = '284y9_metehenchoz';
-const DB_USER = '284y9_henchozn';
-const DB_PASS = 'Pa$$w0rd';
+const DB_USER = '';
+const DB_PASS = '';

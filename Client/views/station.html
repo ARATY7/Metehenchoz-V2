@@ -1,0 +1,45 @@
+<!-- 
+   But     : Station view
+   Auteur  : Noé Henchoz
+   Date    : 13.02.2023 / v1.1
+-->
+
+<!DOCTYPE html>
+
+<div class="container">
+
+  <!-- Start header with city name and icon -->
+  <div class="city-head">
+    <div class="d-flex align-items-center">
+      <p class="display-2 my-2 city-title text-white me-4" id="city-title"></p>
+      <button aria-pressed="false" autocomplete="off" class="btn text-white" data-toggle="button" id="fav-button"
+              type="button">
+        <i class="bi bi-star" id="star-fav"></i>
+      </button>
+    </div>
+    <div class="icon-head text-center ml-auto">
+      <img alt="icon" class="city-icon" id="city-icon">
+      <p class="my-0 text-icon text-white" id="text-icon"></p>
+    </div>
+  </div>
+  <!-- End header with city name and icon -->
+
+  <!-- Start tabs -->
+  <ul class="nav nav-tabs my-2">
+    <li class="nav-item">
+      <a class="nav-link items-tab selected" id="current">Current</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link items-tab" id="forecast">Forecast</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link items-tab" id="map">Map</a>
+    </li>
+  </ul>
+  <!-- End tabs -->
+
+  <!-- Start loader for subViews -->
+  <div class="subViews" id="subViews"></div>
+  <!-- End loader for subViews -->
+
+</div>

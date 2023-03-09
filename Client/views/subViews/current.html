@@ -1,0 +1,95 @@
+<!-- 
+   But     : Current sub view 
+   Auteur  : Noé Henchoz
+   Date    : 08.06.2022 / v1.0 
+-->
+
+<!DOCTYPE html>
+
+<div class="container-fluid text-white">
+
+    <!-- Start row temp -->
+    <div class="row row-current text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12 rounded div-clickable-current" id="div-temperature-current">
+            <span id="temperature-current" class="info-current"></span><br>
+            <p class="desc-current">Actual temperature</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 rounded div-clickable-current" id="div-feelslike-current">
+            <span id="feelslike-current" class="info-current"></span><br>
+            <p class="desc-current">Feels like temperature</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <span id="humidity-current" class="info-current"></span><br>
+            <p class="desc-current">Humidity</p>
+        </div>
+    </div>
+    <!-- End row temp -->
+
+    <!-- Start row cloud rate -->
+    <div class="row row-current text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12"></div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <span id="cloud-current" class="info-current"></span><br>
+            <p class="desc-current">Cloud rate</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12"></div>
+    </div>
+    <!-- End row cloud rate -->
+
+    <!-- Start row wind -->
+    <div class="row row-current text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12 rounded div-clickable-current" id="div-wind-current">
+            <span id="wind-current" class="info-current"></span><br>
+            <p class="desc-current">Wind</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <span id="windDir-current" class="info-current"></span><br>
+            <p class="desc-current">Wind direction</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 rounded div-clickable-current" id="div-gust-current">
+            <span id="gust-current" class="info-current"></span><br>
+            <p class="desc-current">Gust wind</p>
+        </div>
+    </div>
+    <!-- End row wind -->
+
+    <!-- Start row UV/Pressure/Precip -->
+    <div class="row row-current text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <span id="uv-current" class="info-current"></span><br>
+            <p class="desc-current">UV</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 rounded div-clickable-current" id="div-pressure-current">
+            <span id="pressure-current" class="info-current"></span><br>
+            <p class="desc-current">Pressure</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 rounded div-clickable-current" id="div-precip-current">
+            <span id="precip-current" class="info-current"></span><br>
+            <p class="desc-current">Precipitation</p>
+        </div>
+    </div>
+    <!-- End row UV/Pressure/Precip -->
+
+    <!-- Start row last update -->
+    <div class="row row-current text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12"></div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <span id="lastUpdate-current" class="info-current"></span><br>
+            <p class="desc-current">Last update (local time)</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12"></div>
+    </div>
+    <!-- End row last update -->
+
+    <!-- Start row button for update -->
+    <div class="row row-current text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12"></div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <button type="button" class="btn btn-primary" id="btn-update-current"><i class="fa-solid fa-arrows-rotate"></i></button><br><br>
+            <p class="desc-current">Update (updates every 15 minutes)</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12"></div>
+    </div>
+    <!-- End row button for update -->
+
+</div>

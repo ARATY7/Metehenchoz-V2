@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<div class="container" style="height: 95vh;">
+    <h2 class="display-2 my-2 account-title text-white">My account</h2>
+    <div class="d-flex justify-content-center">
+        <div class="card mb-3" style="width: 24rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Name : <b><span id="account-name"></span></b></li>
+                <li class="list-group-item">First name : <b><span id="account-firstName"></span></b></li>
+                <li class="list-group-item">Mail : <b><span id="account-mail"></span></b></li>
+            </ul>
+        </div>
+    </div>
+    <div class="accordion mb-3" id="accordion-change-password">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-acc-one">
+                <button aria-controls="collapse-acc-one" aria-expanded="true" class="accordion-button"
+                        data-bs-target="#collapse-acc-one"
+                        data-bs-toggle="collapse" type="button">
+                    Change password
+                </button>
+            </h2>
+            <div aria-labelledby="heading-acc-one" class="accordion-collapse collapse show"
+                 data-bs-parent="#accordion-change-password"
+                 id="collapse-acc-one">
+                <div class="accordion-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label" for="input-current-password">Current password</label>
+                            <input class="form-control" id="input-current-password" type="password">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="input-new-password">New password</label>
+                            <input class="form-control" id="input-new-password" type="password">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="input-new-password2">Repeat new password</label>
+                            <input class="form-control" id="input-new-password2" type="password">
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary" id="btn-update-password" type="button">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-outline-dark" id="btnLogout" type="button">Logout</button>
+    </div>
+</div>

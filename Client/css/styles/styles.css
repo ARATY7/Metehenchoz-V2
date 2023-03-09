@@ -1,0 +1,372 @@
+/*
+  But     : Main CSS file
+  Auteur  : Noé Henchoz
+  Date    : 25.05.2022 / v1.0 
+*/
+
+html {
+    background-color: #fff;
+}
+
+body {
+    margin-bottom: 149px;
+    background-color: rgb(173, 191, 212);
+}
+
+body::-webkit-scrollbar {
+    width: 14px;
+    background-color: #8aaae5;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 10px;
+}
+
+/* Imports fonts */
+@font-face {
+    font-family: Varela;
+    src: url('../../assets/fonts/VarelaRound-Regular.ttf');
+}
+
+/* Navbar */
+.navbar {
+    background-color: #8aaae5 !important;
+    font-family: Varela;
+    animation: descendre-navbar 0.5s ease-in-out forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+@keyframes descendre-navbar {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cursor pointer on nav links */
+#a-home,
+#a-station,
+#a-map,
+#a-fav-stations,
+#a-admin-panel {
+    cursor: pointer;
+    color: black;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+}
+
+/* Links in navbar animation */
+.items-nav::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #000;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s;
+}
+
+.items-nav:hover::after {
+    transform: scaleX(1);
+}
+
+.active::after {
+    transform: scaleX(1);
+}
+
+/* Remove outline on bootstrap toggle button */
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Title of each view */
+.title-view-anime {
+    animation: apparition-titre 1s ease-in-out forwards;
+    opacity: 0;
+    transform: translateZ(-600px) scale(0.5);
+    animation-delay: 0.5s;
+    font-weight: bold;
+    font-family: Varela;
+}
+
+@keyframes apparition-titre {
+    from {
+        opacity: 0;
+        transform: translateZ(-600px) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0) scale(1);
+    }
+}
+
+.weather-home {
+    height: 310px;
+    border: 1px solid black;
+    border-radius: 15px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.weather-home:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.weather-title-icon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-1 {
+    background-image: url('../../assets/img/newyork.jpg');
+    background-size: cover;
+    opacity: 1;
+}
+
+.weather-2 {
+    background-image: url('../../assets/img/paris.jpg');
+    background-size: cover;
+    opacity: 1;
+}
+
+.weather-3 {
+    background-image: url('../../assets/img/london.jpg');
+    background-size: cover;
+    opacity: 1;
+}
+
+.icon {
+    height: 96px;
+    width: 96px;
+}
+
+.title-city,
+.subtitle {
+    font-weight: 500;
+}
+
+.div-temperature-city {
+    position: absolute;
+}
+
+.temperature-city {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+}
+
+.text-home {
+    font-size: x-large;
+}
+
+.link {
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s ease-in-out;
+}
+
+.link:hover {
+    color: black;
+    transition: color 0.3s ease-in-out;
+}
+
+.items-tab {
+    color: black;
+    cursor: pointer;
+    font-family: Varela;
+}
+
+.items-tab:hover {
+    color: black;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid white !important;
+}
+
+.selected {
+    border: 1px solid white !important;
+    background-color: white !important;
+}
+
+.city-title {
+    font-family: Varela;
+}
+
+.city-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.city-icon {
+    height: 96px;
+    width: 96px;
+}
+
+.text-icon {
+    font-size: medium;
+    font-family: Varela;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    height: 150px;
+    z-index: -1;
+    background-color: #8aaae5;
+}
+
+/* Buttons footer links animation */
+.btn-footer {
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-footer:hover {
+    transform: scale(1.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.mapid {
+    height: 800px;
+}
+
+@media screen and (max-width: 576px) {
+    .mapid {
+        height: 600px;
+    }
+
+    .weather-home {
+        height: 220px;
+    }
+}
+
+/* Keyframes animations */
+@keyframes fromLeftWithBlur {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fromRightWithBlur {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fromTop {
+    0% {
+        transform: translateY(-100px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.row-current,
+.row-forecast {
+    height: auto;
+    padding: 20px;
+}
+
+.info-current,
+.info-forecast {
+    font-family: Varela;
+    font-size: xx-large;
+}
+
+.desc-current,
+.desc-forecast {
+    font-family: Varela;
+    font-size: large;
+}
+
+.div-clickable-current,
+.div-clickable-forecast {
+    transition: background-color 0.4s ease-in-out;
+}
+
+.div-clickable-current:hover,
+.div-clickable-forecast:hover {
+    cursor: pointer;
+    background-color: rgba(138, 170, 229, 0.5);
+    transition: background-color 0.4s ease-in-out;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0, 0, 0, 0.125);
+}
+
+.accordion-body {
+    background-color: rgb(173, 191, 212) !important;
+}
+
+.title-accordion-items {
+    font-family: Varela;
+}
+
+.days-hour-1-forecast,
+.days-temp-1-forecast {
+    font-family: Varela;
+}
+
+#linkGoToSignUp,
+#linkGoToLogin,
+#linkForgotPassword {
+    cursor: pointer;
+}
+
+.div-error-favStations {
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fav-button:focus, #fav-button.active {
+    outline: none !important;
+    border: none !important;
+}
+
+#star-fav {
+    font-size: 2em;
+}
+
+.fav-title,
+.account-title,
+.admin-title {
+    font-family: Varela;
+}
+
+.div-no-favStations {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Varela;
+}

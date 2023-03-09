@@ -1,0 +1,292 @@
+<!-- 
+   But     : Main HTML page 
+   Auteur  : Noé Henchoz
+   Date    : 01.02.2023 / v1.1 
+-->
+
+<!DOCTYPE html>
+
+<html lang="fr-ch">
+
+<head>
+    <!-- Encoding and responsive -->
+    <meta charset="UTF-8">
+    <!-- Title -->
+    <title>Météhenchoz - World weather</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <!-- Icon that changes according to the time (sun or moon) -->
+    <link href="assets/img/moon.png" id="icon" rel="icon">
+    <!-- Bootstrap 5.2.3 -->
+    <link href="css/bootstrap/bootstrap.5.2.3.min.css" rel="stylesheet"/>
+    <!-- JS Bundle Bootstrap 5.2.3 -->
+    <script src="js/bootstrap/bootstrap.5.2.3.min.js"></script>
+    <!-- My stylesheet -->
+    <link href="css/styles/styles.css" rel="stylesheet">
+    <!-- jQuery 3.6.3 -->
+    <script src="js/jQuery/jquery.3.6.3.min.js"></script>
+    <!-- CDN Icons 6.2.1 from https://fontawesome.com/ -->
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+    <!-- CDN Icons 1.10.3 from https://bootstrap.com/ -->
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
+          integrity="sha512-YFENbnqHbCRmJt5d+9lHimyEMt8LKSNTMLSaHjvsclnZGICeY/0KYEeiHwD1Ux4Tcao0h60tdcMv+0GljvWyHg=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="css/leaflet/leaflet.1.9.3.min.css" rel="stylesheet"/>
+    <script src="js/leaflet/leaflet.1.9.3.min.js"></script>
+    <!-- All Ctrl JS -->
+    <script src="js/ctrls/indexCtrl.js"></script>
+    <script src="js/ctrls/httpServ.js"></script>
+    <script src="js/ctrls/homeCtrl.js"></script>
+    <script src="js/ctrls/stationCtrl.js"></script>
+    <script src="js/ctrls/footerCtrl.js"></script>
+    <script src="js/ctrls/currentCtrl.js"></script>
+    <script src="js/ctrls/forecastCtrl.js"></script>
+    <script src="js/ctrls/mapCtrl.js"></script>
+    <script src="js/ctrls/favStationsCtrl.js"></script>
+    <script src="js/ctrls/errorFavStationsCtrl.js"></script>
+    <script src="js/ctrls/accountCtrl.js"></script>
+    <script src="js/ctrls/adminCtrl.js"></script>
+    <!-- All JS const -->
+    <script src="js/const/api.js"></script>
+    <script src="js/const/cities.js"></script>
+    <script src="js/const/server.js"></script>
+</head>
+
+<body>
+
+<!-- Start navbar -->
+<nav class="navbar navbar-expand-lg top-0 navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <!-- Title on the left -->
+        <a class="navbar-brand" id="a-home">Météhenchoz</a>
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarResponsive" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon" id="btn-toggler-icon"></span>
+        </button>
+        <!-- List of menus -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <!-- Menus -->
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link items-nav" id="a-station">Station</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link items-nav" id="a-fav-stations">My favorites stations</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item d-none" id="li-admin-panel">
+                    <a class="nav-link items-nav" id="a-admin-panel">ADMIN PANEL</a>
+                </li>
+            </ul>
+
+            <form class="d-flex">
+                <!-- Start Search -->
+                <input aria-label="Search for a city" class="form-control me-2" id="nav-in-search"
+                       placeholder="Search for a city" type="text">
+                <button class="btn btn-outline-dark" id="nav-btn-search" type="button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <span class="mx-2 my-auto"><i class="fa-solid fa-minus"></i></span>
+                <button class="btn btn-outline-dark" id="nav-btn-locate" type="button">
+                    <i class="fa-solid fa-location-dot"></i>
+                </button>
+                <!-- End Search -->
+                <!-- Start Login -->
+                <span class="mx-2 my-auto"></span>
+                <button class="btn btn-outline-dark" id="nav-btn-login" type="button">
+                    Login
+                </button>
+                <button class="btn btn-outline-dark d-none" id="nav-btn-account" type="button">
+                    Account
+                </button>
+                <!-- End Login -->
+            </form>
+
+        </div>
+        <!-- End List of menus -->
+    </div>
+</nav>
+<!-- End navbar -->
+
+<!-- Start Toast for errors -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div aria-atomic="true" aria-live="assertive" class="toast hide" id="liveToast" role="alert">
+        <div class="toast-header">
+            <strong class="me-auto">Information</strong>
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" type="button"></button>
+        </div>
+        <div class="toast-body" id="toast-error"></div>
+    </div>
+</div>
+<!-- End Toast for errors -->
+
+<!-- Modal for login -->
+<div aria-hidden="true" class="modal hide" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Login</h1>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label" for="signInMailAddress">Email address</label>
+                    <input aria-describedby="emailHelp" class="form-control" id="signInMailAddress" type="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="signInPassword">Password</label>
+                    <input class="form-control" id="signInPassword" type="password">
+                </div>
+                <div class="text-center mb-3">
+                    <span class="form-label" id="errorMessageSignIn" style="color: red;"></span>
+                </div>
+                <div class="text-center mb-3">
+                    <span class="form-label" id="linkGoToSignUp">Don't have an account yet? Click here</span>
+                </div>
+                <div class="text-center">
+                    <span class="form-label" id="linkForgotPassword">Forgot your password? Click here</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-danger" data-bs-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-outline-dark" id="btnSignIn" type="button">Sign in</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Sign up -->
+<div aria-hidden="true" class="modal hide" id="signUpModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Sign up</h1>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label" for="signUpName">Name</label>
+                    <input class="form-control" id="signUpName" placeholder="Wick" type="text">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="signUpFirstName">First Name</label>
+                    <input class="form-control" id="signUpFirstName" placeholder="James" type="text">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="signUpMailAddress">Email address</label>
+                    <input class="form-control" id="signUpMailAddress" placeholder="James.Wick@gmail.com" type="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="signUpPassword">Password</label>
+                    <input class="form-control" id="signUpPassword" placeholder="Pa$$w0rd" type="password">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="signUpPassword2">Repeat Password</label>
+                    <input class="form-control" id="signUpPassword2" placeholder="Pa$$w0rd" type="password">
+                </div>
+                <div class="text-center mb-3">
+                    <span class="form-label" id="errorMessage" style="color: red;"></span>
+                </div>
+                <div class="text-center">
+                    <span class="form-label" id="linkGoToLogin">Already have an account? Click here</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-danger" data-bs-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-outline-dark" id="btnSignUp" type="button">Sign up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for mail verification -->
+<div aria-hidden="true" class="modal hide" id="mailVerificationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Mail verification</h1>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <span>Please confirm your mail address by typing the code you received on the mail : </span>
+                    <span class="fw-bold" id="mailToVerif"></span>
+                </div>
+                <div class="text-center mb-3">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div class="text-center mb-3">
+                    <span>If you don't receive the mail, check spams folder :(</span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="mailVerif">Passcode</label>
+                    <input class="form-control" id="mailVerif" placeholder="123456" type="text">
+                </div>
+                <div class="text-center mb-3">
+                    <span class="form-label" id="errorMessageMailVerification" style="color: red;"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-danger" id="goBack" type="button">Back</button>
+                <button class="btn btn-outline-dark" id="btnCreateAccount" type="button">Create an account</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for forgotten password -->
+<div aria-hidden="true" class="modal hide" id="forgottenPasswordModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Forgotten password</h1>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <span>Please enter your mail address to get a new password for your account : </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="input-mail-forgotten-password">Mail</label>
+                    <input class="form-control" id="input-mail-forgotten-password" placeholder="john.wick@gmail.com"
+                           type="email">
+                </div>
+                <div class="text-center mb-3">
+                    <span>If you don't receive the mail, check spams folder :(</span>
+                </div>
+                <div class="text-center mb-3">
+                    <span class="form-label" id="errorMessageMailForgottenPassword" style="color: red;"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-danger" id="goToLogin" type="button">Back</button>
+                <button class="btn btn-outline-dark" id="btn-send-forgotten-password" type="button">Send code
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start main content -->
+<main>
+    <div class="container-fluid" id="views"></div>
+</main>
+<!-- End main content -->
+
+<!-- Start footer -->
+<footer class="bg-gradient text-center text-white bottom-0 position-fixed" id="footer"></footer>
+<!-- End footer -->
+
+</body>
+
+</html>

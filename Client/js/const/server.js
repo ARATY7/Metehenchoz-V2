@@ -1,0 +1,1 @@
+const SERVER_URL = "https://server.metehenchoz.ch/index.php";

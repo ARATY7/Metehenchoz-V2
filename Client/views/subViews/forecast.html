@@ -1,0 +1,193 @@
+<!-- 
+   But     : Forecast sub view 
+   Auteur  : Noé Henchoz
+   Date    : 08.06.2022 / v1.0 
+-->
+
+<!DOCTYPE html>
+
+<!-- Start accordion for the 3 days -->
+<div class="accordion accordion-forecast pb-5" id="accordionForecast">
+
+    <!-- Start first accordion item -->
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button title-accordion-items" type="button" data-bs-toggle="collapse"
+                data-bs-target="#forecast-1" aria-expanded="true" aria-controls="forecast-1" id="date-1-forecast">
+            </button>
+        </h2>
+        <div id="forecast-1" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+            data-bs-parent="#accordionForecast">
+            <div class="accordion-body text-white">
+
+                <!-- Start sunrise and sunset row -->
+                <div class="row row-forecast div-sun">
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor"
+                            class="bi bi-sunrise" viewBox="0 0 16 16">
+                            <path
+                                d="M7.646 1.146a.5.5 0 0 1 .708 0l1.5 1.5a.5.5 0 0 1-.708.708L8.5 2.707V4.5a.5.5 0 0 1-1 0V2.707l-.646.647a.5.5 0 1 1-.708-.708l1.5-1.5zM2.343 4.343a.5.5 0 0 1 .707 0l1.414 1.414a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7zm3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <br>
+                        <p class="mb-0 desc-forecast" id="sunrise-1-forecast"></p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor"
+                            class="bi bi-sunset" viewBox="0 0 16 16">
+                            <path
+                                d="M7.646 4.854a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V1.5a.5.5 0 0 0-1 0v1.793l-.646-.647a.5.5 0 1 0-.708.708l1.5 1.5zm-5.303-.51a.5.5 0 0 1 .707 0l1.414 1.413a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .706l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7zm3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <br>
+                        <p class="mb-0 desc-forecast" id="sunset-1-forecast"></p>
+                    </div>
+                </div>
+                <!-- End sunrise and sunset row -->
+
+                <!-- Start temperature min/avg/max row -->
+                <div class="row row-forecast div-temperature-forecast">
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center" id="div-minTemp-1-forecast">
+                        <span class="info-forecast" id="minTemp-1-forecast"></span>
+                        <p class="desc-forecast">Minimum temperature</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center" id="div-avgTemp-1-forecast">
+                        <span class="info-forecast" id="avgTemp-1-forecast"></span>
+                        <p class="desc-forecast">Average temperature</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center" id="div-maxTemp-1-forecast">
+                        <span class="info-forecast" id="maxTemp-1-forecast"></span>
+                        <p class="desc-forecast">Maximum temperature</p>
+                    </div>
+                </div>
+                <!-- End temperature min/avg/max row -->
+
+                <!-- Start forecast for the day -->
+                <div class="row row-forecast div-days-1-forecast" id="div-days-1-forecast"></div>
+                <!-- End forecast for the day -->
+
+            </div>
+        </div>
+    </div>
+    <!-- End first accordion item -->
+
+    <!-- Start second accordion item -->
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed title-accordion-items" type="button" data-bs-toggle="collapse"
+                data-bs-target="#forecast-2" aria-expanded="false" aria-controls="forecast-2" id="date-2-forecast">
+            </button>
+        </h2>
+        <div id="forecast-2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionForecast">
+            <div class="accordion-body text-white">
+
+                <!-- Start sunrise and sunset row -->
+                <div class="row row-forecast div-sun">
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor"
+                            class="bi bi-sunrise" viewBox="0 0 16 16">
+                            <path
+                                d="M7.646 1.146a.5.5 0 0 1 .708 0l1.5 1.5a.5.5 0 0 1-.708.708L8.5 2.707V4.5a.5.5 0 0 1-1 0V2.707l-.646.647a.5.5 0 1 1-.708-.708l1.5-1.5zM2.343 4.343a.5.5 0 0 1 .707 0l1.414 1.414a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7zm3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <br>
+                        <p class="mb-0 desc-forecast" id="sunrise-2-forecast"></p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor"
+                            class="bi bi-sunset" viewBox="0 0 16 16">
+                            <path
+                                d="M7.646 4.854a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V1.5a.5.5 0 0 0-1 0v1.793l-.646-.647a.5.5 0 1 0-.708.708l1.5 1.5zm-5.303-.51a.5.5 0 0 1 .707 0l1.414 1.413a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .706l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7zm3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <br>
+                        <p class="mb-0 desc-forecast" id="sunset-2-forecast"></p>
+                    </div>
+                </div>
+                <!-- End sunrise and sunset row -->
+
+                <!-- Start temperature min/avg/max row -->
+                <div class="row row-forecast div-temperature-forecast">
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center" id="div-minTemp-2-forecast">
+                        <span class="info-forecast" id="minTemp-2-forecast"></span>
+                        <p class="desc-forecast">Minimum temperature</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center" id="div-avgTemp-2-forecast">
+                        <span class="info-forecast" id="avgTemp-2-forecast"></span>
+                        <p class="desc-forecast">Average temperature</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center" id="div-maxTemp-2-forecast">
+                        <span class="info-forecast" id="maxTemp-2-forecast"></span>
+                        <p class="desc-forecast">Maximum temperature</p>
+                    </div>
+                </div>
+                <!-- End temperature min/avg/max row -->
+
+                <!-- Start forecast for the day -->
+                <div class="row row-forecast div-days-2-forecast" id="div-days-2-forecast"></div>
+                <!-- End forecast for the day -->
+
+            </div>
+        </div>
+    </div>
+    <!-- End second accordion item -->
+
+    <!-- Start third accordion item -->
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed title-accordion-items" type="button" data-bs-toggle="collapse"
+                data-bs-target="#forecast-3" aria-expanded="false" aria-controls="forecast-3" id="date-3-forecast">
+            </button>
+        </h2>
+        <div id="forecast-3" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionForecast">
+            <div class="accordion-body text-white">
+
+                <!-- Start sunrise and sunset row -->
+                <div class="row row-forecast div-sun">
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor"
+                            class="bi bi-sunrise" viewBox="0 0 16 16">
+                            <path
+                                d="M7.646 1.146a.5.5 0 0 1 .708 0l1.5 1.5a.5.5 0 0 1-.708.708L8.5 2.707V4.5a.5.5 0 0 1-1 0V2.707l-.646.647a.5.5 0 1 1-.708-.708l1.5-1.5zM2.343 4.343a.5.5 0 0 1 .707 0l1.414 1.414a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7zm3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <br>
+                        <p class="mb-0 desc-forecast" id="sunrise-3-forecast"></p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor"
+                            class="bi bi-sunset" viewBox="0 0 16 16">
+                            <path
+                                d="M7.646 4.854a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V1.5a.5.5 0 0 0-1 0v1.793l-.646-.647a.5.5 0 1 0-.708.708l1.5 1.5zm-5.303-.51a.5.5 0 0 1 .707 0l1.414 1.413a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .706l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7zm3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <br>
+                        <p class="mb-0 desc-forecast" id="sunset-3-forecast"></p>
+                    </div>
+                </div>
+                <!-- End sunrise and sunset row -->
+
+                <!-- Start temperature min/avg/max row -->
+                <div class="row row-forecast div-temperature-forecast">
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center" id="div-minTemp-3-forecast">
+                        <span class="info-forecast" id="minTemp-3-forecast"></span>
+                        <p class="desc-forecast">Minimum temperature</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center" id="div-avgTemp-3-forecast">
+                        <span class="info-forecast" id="avgTemp-3-forecast"></span>
+                        <p class="desc-forecast">Average temperature</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center" id="div-maxTemp-3-forecast">
+                        <span class="info-forecast" id="maxTemp-3-forecast"></span>
+                        <p class="desc-forecast">Maximum temperature</p>
+                    </div>
+                </div>
+                <!-- End temperature min/avg/max row -->
+
+                <!-- Start forecast for the day -->
+                <div class="row row-forecast div-days-3-forecast" id="div-days-3-forecast"></div>
+                <!-- End forecast for the day -->
+
+            </div>
+        </div>
+    </div>
+    <!-- End third accordion item -->
+
+</div>
+<!-- End accordion for the 3 days -->
